@@ -10,7 +10,7 @@
 package cmd
 
 import (
-	"autobahn/lib"
+	"autobahn-info/lib"
 	"fmt"
 	"github.com/spf13/cobra"
 	"os"

@@ -10,7 +10,7 @@
 package cmd
 
 import (
-	"autobahn/lib"
+	"autobahn-info/lib"
 	"fmt"
 	"github.com/go-resty/resty/v2"
 	"github.com/spf13/cobra"

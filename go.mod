@@ -1,4 +1,4 @@
-module autobahn
+module autobahn-info
 
 go 1.20
 
