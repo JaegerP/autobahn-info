@@ -3,19 +3,23 @@ GOOPTS=
 
 RM=rm -f
 
-PROJECT_NAME=autobahn-info
+SOURCE=$(wildcard *.go)
+TARGET=autobahn-info
 
 INSTALL_PATH=/usr/local/bin
 
 version:
-	${GO} version
+	$(GO) version
 
 clean:
-	${RM} ${PROJECT_NAME} 
+	$(RM) $(TARGET) 
 
-all: clean version
-	${GO} ${GOOPTS} build
+test: $(filter-out %_test.go, $(SOURCE))
+	$(GO) test ./...
+
+all: clean version $(SOURCE)
+	$(GO) $(GOOPTS) build
 
 install: all
-	@[[ -d ${INSTALL_PATH} ]] && cp -v ${PROJECT_NAME}* ${INSTALL_PATH}/. || echo Directory ${INSTALL_PATH} does not exist, cancelling.
+	@[[ -d $(INSTALL_PATH) ]] && cp -v $(TARGET)* $(INSTALL_PATH)/. || echo Directory $(INSTALL_PATH) does not exist, cancelling.
 	
